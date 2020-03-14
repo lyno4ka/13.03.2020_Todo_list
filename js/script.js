@@ -5,13 +5,10 @@ const $modalAddTask = $('#modalAddTask');
 $formAddTask.on('submit', function(event) {
     event.preventDefault();
 
-    // console.log(this);
-    // console.log($('[name="title"]', this).val());
-
     let task = {
         id: new Date().getTime(), 
         title: $('[name="title"]', this).val(),
-        status: 1 //1 - todo, 2 - in progress, 3 - done
+        status: 2 //1 - todo, 2 - in progress, 3 - done
     };
 
     addTask(task.id, task);
