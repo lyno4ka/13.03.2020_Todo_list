@@ -31,3 +31,10 @@ for (let key in localStorage) {
 
     addTask(task.id, task);
 }
+
+$('body').on('click', '.btn-edit', function() {
+    const $parent = $(this).parents('[data-id]');
+
+    const taskId = $parent.data('id');
+    console.log(taskId);
+});
