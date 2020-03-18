@@ -42,9 +42,6 @@ $('body').on('click', '.btn-edit', function() {
     console.log(task);
 
     for(let key in task) {
-        //key
-        //task[key]
-
         $formEditTask.find(`[name="${key}"]`).val(task[key]);
     }
 
@@ -67,8 +64,6 @@ $formEditTask.on('submit', function(event) {
     $modalEditTask.modal('hide');
 
     localStorage.setItem(task.id, JSON.stringify(task));
-
-    console.log(key);
 });
 
 $('body').on('click', '.btn-delete', function(event) {
