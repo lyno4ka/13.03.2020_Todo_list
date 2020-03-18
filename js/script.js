@@ -22,8 +22,6 @@ $formAddTask.on('submit', function(event) {
     this.reset(); //метод у формы, чтобы сбросить все значения полей по умолчанию
 });
 
-console.log(localStorage);
-
 for (let key in localStorage) {
    
     if(!localStorage.hasOwnProperty(key)) continue;
@@ -39,7 +37,6 @@ $('body').on('click', '.btn-edit', function() {
     const taskId = $parent.data('id');
 
     const task = JSON.parse(localStorage.getItem(taskId));
-    console.log(task);
 
     for(let key in task) {
         $formEditTask.find(`[name="${key}"]`).val(task[key]);
@@ -67,7 +64,6 @@ $formEditTask.on('submit', function(event) {
 });
 
 $('body').on('click', '.btn-delete', function(event) {
-    console.log(this);
 
     const $parent = $(this).parents('[data-id]')
 

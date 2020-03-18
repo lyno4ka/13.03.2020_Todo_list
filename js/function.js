@@ -5,7 +5,8 @@ function addTask(id, task) {
 
     const $btnDelete = $('<button>')
             .addClass('btn btn-danger btn-xs pull-right btn-delete')
-            .html('<i class="glyphicon glyphicon-trash"></i>');
+            .html('<i class="glyphicon glyphicon-trash"></i>')
+            .css('margin-left', '10px');
 
     const $taskItem = $('<li>')
             .addClass('list-group-item')
