@@ -1,6 +1,8 @@
 const $formAddTask = $('#formAddTask');
 const $tasksList = $('#tasks-list');
 const $modalAddTask = $('#modalAddTask');
+const $formEditTask = $('#formEditTask');
+const $modalEditTask = $('#modalEditTask');
 
 $formAddTask.on('submit', function(event) {
     event.preventDefault();
@@ -36,5 +38,34 @@ $('body').on('click', '.btn-edit', function() {
     const $parent = $(this).parents('[data-id]');
 
     const taskId = $parent.data('id');
-    console.log(taskId);
+
+    const task = JSON.parse(localStorage.getItem(taskId));
+    console.log(task);
+
+    for(let key in task) {
+        //key
+        //task[key]
+
+        $formEditTask.find(`[name="${key}"]`).val(task[key]);
+    }
+
+    $modalEditTask.modal('show');
+});
+
+$formEditTask.on('submit', function(event) {
+    event.preventDefault();
+
+    let task = { 
+        title: $('[name="title"]', this).val(),
+        status: $('[name="status"]', this).val(),  //1 - todo, 2 - in progress, 3 - done
+        id: $('[name="id"]', this).val()
+    };
+
+    $tasksList.find(`[data-id="${task.id}"]`).remove();
+
+    addTask(task.id, task);
+
+    $modalEditTask.modal('hide');
+
+    localStorage.setItem(task.id, JSON.stringify(task));
 });
