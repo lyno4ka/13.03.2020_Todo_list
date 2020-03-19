@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+
 const $formAddTask = $('#formAddTask');
 const $tasksList = $('#tasks-list');
 const $modalAddTask = $('#modalAddTask');
@@ -10,7 +14,9 @@ $formAddTask.on('submit', function(event) {
     let task = {
         id: new Date().getTime(), 
         title: $('[name="title"]', this).val(),
-        status: 1 //1 - todo, 2 - in progress, 3 - done
+        status: 1, //1 - todo, 2 - in progress, 3 - done
+        date: $('[name="date"]', this).val(),
+		description: $('[name="description"]', this).val(),
     };
 
     addTask(task.id, task);
@@ -51,7 +57,9 @@ $formEditTask.on('submit', function(event) {
     let task = { 
         title: $('[name="title"]', this).val(),
         status: $('[name="status"]', this).val(),  //1 - todo, 2 - in progress, 3 - done
-        id: $('[name="id"]', this).val()
+        id: $('[name="id"]', this).val(),
+        date: $('[name="date"]', this).val(),
+		description: $('[name="description"]', this).val()
     };
 
     $tasksList.find(`[data-id="${task.id}"]`).remove();
